@@ -1,4 +1,10 @@
 import React, { useState } from 'react';
+import { 
+  TextField, 
+  Button, 
+  Box,
+  Dialog,
+  DialogTitle } from '@mui/material';
 
 export default function Form() {
   const [formVal, setFormVal] = useState({
@@ -24,13 +30,34 @@ export default function Form() {
 
   return (
     <>
-      <form>
-        <label>First name:</label><br />
-        <input type="text" id="fname" name="fname" onChange={(event) => handleFormVal(event)} /><br />
-        <label>Last name:</label><br />
-        <input type="text" id="lname" name="lname" onChange={(event) => handleFormVal(event)} /><br /><br />
-        <input type="submit" value="Submit" onClick={(event) => formSubmit(event)} />
-      </form>
+      <Box>
+        <form>
+          <label>First name:</label><br />
+          <TextField
+            type="text"
+            id="fname"
+            name="fname"
+            value={formVal.fname}
+            onChange={handleFormVal}
+          /><br />
+          <label>Last name:</label><br />
+          <TextField
+            type="text"
+            id="lname"
+            name="lname"
+            value={formVal.lname}
+            onChange={handleFormVal}
+          /><br /><br />
+          <Button variant="contained" color="primary" onClick={formSubmit}>
+            Submit
+          </Button>
+        </form>
+      </Box>
+
+      <Dialog open={true} > 
+        <h1>hello</h1>
+        <DialogTitle>Set backup account</DialogTitle>
+      </Dialog>
     </>
   );
 }
